@@ -23,17 +23,16 @@ const EditBook = () => {
         setloading(false) 
         console.log(err)
       })
-    })
-    const handelSavebook = () => {
+    },[])
+    const handelEditbook = () => {
       const data = {
         title,
         author,
         publishYear,
         loading,
       };
-      setloading(true)
     axios
-      .post(`http://localhost:5555/Books`, data)
+      .put(`http://localhost:5555/Books/${id}`, data)
       .then(() => {
         setloading(false);
         navigate("/");
@@ -86,7 +85,7 @@ const EditBook = () => {
           /> 
         </div>
 
-        <button className="p-2 bg-sky-300 m-8" onClick={handelSavebook}>
+        <button className="p-2 bg-sky-300 m-8" onClick={handelEditbook}>
            Save
         </button>
       </div>
